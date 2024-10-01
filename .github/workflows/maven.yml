@@ -42,6 +42,6 @@ jobs:
 #      run: mvn -B package --file pom.xml
      # Step 5: Run tests and generate Allure results
     - name: Run Tests
-      run: mvn test
+      run: mvn test -Denv=remote
     - name: Run Allure
       run: mvn  mvn allure:serve
