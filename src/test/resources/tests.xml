@@ -4,8 +4,7 @@
        data-provider-thread-count="3">
     <test name="Tests">
         <classes>
-            <class name="TimeTest"/>
-            <class name="VideoParamsTest"/>
+            <class name="BookTests"/>
         </classes>
     </test>
 </suite>

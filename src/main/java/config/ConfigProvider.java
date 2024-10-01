@@ -16,6 +16,7 @@ public class ConfigProvider {
             default:
                 throw new RuntimeException("Provide implementation for '" + env + "' environment");
         }
+        ConfigFactory.setProperty("common.config.path", CONFIG_DIR + "/common.properties");
         CONFIG_PROPS = ConfigFactory.create(ConfigProps.class, System.getProperties());
     }
 }
