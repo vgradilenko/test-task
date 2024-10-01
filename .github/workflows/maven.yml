@@ -27,9 +27,21 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+     # Step 3: Cache Maven dependencies to speed up the build
+    - name: Cache Maven packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-maven
+      # Step 4: Install dependencies using Maven
+    - name: Install dependencies
+      run: mvn install -DskipTests
+
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-    # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
-    - name: Update dependency graph
-      uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
+     # Step 5: Run tests and generate Allure results
+    - name: Run Tests
+      run: mvn test
+    - name: Run Allure
+      run: mvn  mvn allure:serve
