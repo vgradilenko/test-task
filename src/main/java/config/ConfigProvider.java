@@ -11,7 +11,7 @@ public class ConfigProvider {
     static {
         Environment env = Environment.getByCommandLineProp();
         String s = Objects.requireNonNull(ClassLoader.getSystemClassLoader()
-                .getResource(env + ".properties")).toString();
+                .getResource(env.name().toLowerCase() + ".properties")).toString();
         System.out.println("TEST PATH " + s);
 
         switch (env) {
