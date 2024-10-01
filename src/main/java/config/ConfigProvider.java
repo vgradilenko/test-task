@@ -9,12 +9,9 @@ public class ConfigProvider {
     static {
         Environment env = Environment.getByCommandLineProp();
         switch (env) {
-            case REMOTE:
-            case LOCAL:
-                ConfigFactory.setProperty("remote.config.path", CONFIG_DIR + "/" + env + ".properties");
-                break;
-            default:
-                throw new RuntimeException("Provide implementation for '" + env + "' environment");
+            case LOCAL, REMOTE ->
+                    ConfigFactory.setProperty("remote.config.path", CONFIG_DIR + "/" + env + ".properties");
+            default -> throw new RuntimeException("Provide implementation for '" + env + "' environment");
         }
         ConfigFactory.setProperty("common.config.path", CONFIG_DIR + "/common.properties");
         CONFIG_PROPS = ConfigFactory.create(ConfigProps.class, System.getProperties());
