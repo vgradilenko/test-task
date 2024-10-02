@@ -44,4 +44,4 @@ jobs:
     - name: Run Tests
       run: mvn test -Denv=remote
     - name: Run Allure
-      run: mvn  mvn allure:serve
+      run: mvn allure:serve
