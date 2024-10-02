@@ -9,7 +9,6 @@ public enum Environment {
 
     public static Environment getByCommandLineProp() {
         String env = Optional.ofNullable(System.getenv("env")).orElse(REMOTE.name());
-        System.out.println("CURRENT_ENV_IS " + env);
         Objects.requireNonNull(env, "Environment is not defined. Specify it by '-Denv=<env>'");
         return Arrays.stream(values())
                 .filter(it -> it.name().equalsIgnoreCase(env))
