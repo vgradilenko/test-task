@@ -44,9 +44,23 @@ jobs:
     - name: Run Allure
       run: mvn allure:report
 
-    - name: Deploy Allure report to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
+
+        # Step 7: Upload Allure Results and Report
+    - name: Upload Allure Results
+      uses: actions/upload-artifact@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./target/allure-report
-        publish_branch: gh-pages
+        name: allure-results
+        path: target/allure-results
+
+    - name: Upload Allure Report
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: target/site/allure-maven-plugin
+
+#    - name: Deploy Allure report to GitHub Pages
+#      uses: peaceiris/actions-gh-pages@v4
+#      with:
+#        github_token: ${{ secrets.GITHUB_TOKEN }}
+#        publish_dir: ./target/allure-report
+#        publish_branch: gh-pages
