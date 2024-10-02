@@ -130,6 +130,7 @@ public class BookTests {
     @Test(dataProvider = "invalidBookBody",
             dataProviderClass = BookDataProvider.class)
     public void verify_http_bad_request_for_delete_endpoint(BookModel expectedBook) {
+        System.out.println("TEST " + ConfigProvider.CONFIG_PROPS.getDateFormat());
         Response<Void> response = BookRestHelper.deleteBookById(expectedBook.getId(), HttpURLConnection.HTTP_BAD_REQUEST);
         Assertions.assertThat(response.code()).isEqualTo(HttpURLConnection.HTTP_BAD_REQUEST);
     }
