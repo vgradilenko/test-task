@@ -12,6 +12,8 @@ import retrofit2.Response;
 import java.net.HttpURLConnection;
 import java.util.List;
 
+import static util.RandomUtil.ONE_VAL;
+
 public class AuthorTests {
 
     @Test
@@ -134,6 +136,6 @@ public class AuthorTests {
                 AuthorRestHelper.getAuthorsByBookId(bookModel.getId());
 
         Assertions.assertThat(response.body()).isNotNull();
-        Assertions.assertThat(response.body().size()).isEqualTo(1);
+        Assertions.assertThat(response.body().size()).isEqualTo(ONE_VAL);
     }
 }

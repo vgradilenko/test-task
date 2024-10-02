@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomUtil {
     public final static int MIN_STRING_LENGTH = 100;
     public final static int ZERO_VAL = 0;
+    public final static int ONE_VAL = 1;
 
     public static String getRandomString(int length) {
         return RandomStringUtils.insecure().nextAlphabetic(length);

@@ -22,6 +22,8 @@
         <logback-classic.version>1.2.9</logback-classic.version>
         <allure.version>2.24.0</allure.version>
         <aspectj.version>1.9.20.1</aspectj.version>
+        <commons-lang3.version>3.17.0</commons-lang3.version>
+        <maven-surefire.version>3.1.2</maven-surefire.version>
         <allure.maven-plugin.version>2.12.0</allure.maven-plugin.version>
     </properties>
 
@@ -30,7 +32,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven-surefire.version}</version>
                 <configuration>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
@@ -125,7 +127,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.17.0</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
