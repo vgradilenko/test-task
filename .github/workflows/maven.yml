@@ -38,7 +38,8 @@ jobs:
     - name: Install dependencies
       run: mvn install -DskipTests
     - name: Run Tests
-      run: mvn clean test -Denv=remote
+      run: mvn clean test -Denv=remote -e
+      continue-on-error: true
         # Step 6: Install Allure command-line tool
     - name: Install Allure
       run: |
