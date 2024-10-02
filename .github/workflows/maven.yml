@@ -43,7 +43,6 @@ jobs:
         # Step 6: Install Allure command-line tool
     - name: Install Allure
       run: |
-            sudo apt-add-repository ppa:qameta/allure
             sudo apt-get update
             sudo apt-get install allure
         
