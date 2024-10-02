@@ -1,9 +1,9 @@
 package dataProvider;
 
-import config.ConfigProvider;
 import http.book.BookRestHelper;
 import model.book.BookModelProvider;
 import org.testng.annotations.DataProvider;
+import util.DateUtil;
 
 import java.util.Objects;
 
@@ -85,8 +85,7 @@ public class BookDataProvider {
     public static Object[][] getDatePatternProvider() {
         return new Object[][]{
                 {
-                        getBookRandomId(),
-                        ConfigProvider.CONFIG_PROPS.getDateFormat()
+                        getBookRandomId()
                 },
         };
     }

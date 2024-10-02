@@ -16,7 +16,4 @@ public interface ConfigProps extends Config {
 
     @Key("connection.timeout")
     int getConnectionTimeout();
-
-    @Key("expected.date.format")
-    String getDateFormat();
 }

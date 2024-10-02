@@ -8,8 +8,9 @@ import retrofit2.Response;
 
 import java.net.HttpURLConnection;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import static util.DateUtil.convertToDateTime;
 
 public class BookTests {
 
@@ -107,14 +108,12 @@ public class BookTests {
 
     @Test(dataProvider = "datePatternProvider",
             dataProviderClass = BookDataProvider.class)
-    public void verify_that_date_field_has_correct_format(long id, String dateFormat) {
+    public void verify_that_date_field_has_correct_format(long id) {
         BookModel book = BookRestHelper.getBookById(id).body();
         Assertions.assertThat(book).isNotNull();
-        String publishDate = book.getPublishDate();
+        ZonedDateTime zonedDateTime = convertToDateTime(book.getPublishDate());
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
-        ZonedDateTime ldtStart = ZonedDateTime.parse(publishDate, formatter);
-        Assertions.assertThat(ldtStart).isNotNull();
+        Assertions.assertThat(zonedDateTime).isNotNull();
     }
 
     @Test(dataProvider = "bookProvider",
