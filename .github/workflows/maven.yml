@@ -41,17 +41,8 @@ jobs:
       run: mvn clean test -Denv=remote -e
       continue-on-error: true
         # Step 6: Install Allure command-line tool
-    - name: Install Allure
-      run: |
-            sudo apt-get update
-            sudo apt-get install allure
-        
-        # Step 7: Generate Allure Report from Test Results
-    - name: Generate Allure Report
-      run: |
-            allure generate --clean target/allure-results/ --output allure-report/
-        
-        # Step 8: Upload Allure Report as an artifact
+    - name: Run Allure
+      run: mvn allure:serve
     - name: Upload Allure Report
       uses: actions/upload-artifact@v4
       with:
