@@ -14,12 +14,13 @@ public class ConfigProvider {
                 .getResource(env.name().toLowerCase() + ".properties")).toString();
         System.out.println("TEST PATH " + s);
 
-        switch (env) {
-            case LOCAL, REMOTE ->
-                    ConfigFactory.setProperty("remote.config.path", s);
-            default -> throw new RuntimeException("Provide implementation for '" + env + "' environment");
-        }
+//        switch (env) {
+//            case LOCAL, REMOTE ->
+//                    ConfigFactory.setProperty("remote.config.path", s);
+//            default -> throw new RuntimeException("Provide implementation for '" + env + "' environment");
+//        }
         ConfigFactory.setProperty("common.config.path", CONFIG_DIR + "/common.properties");
+        ConfigFactory.setProperty("remote.config.path", CONFIG_DIR + "/remote.properties");
         CONFIG_PROPS = ConfigFactory.create(ConfigProps.class, System.getProperties());
     }
 }
