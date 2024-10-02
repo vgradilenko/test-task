@@ -42,7 +42,8 @@ jobs:
       continue-on-error: true
         # Step 6: Install Allure command-line tool
     - name: Run Allure
-      run: mvn allure:serve
+      run: mvn allure:report
+
     - name: Upload Allure Report
       uses: actions/upload-artifact@v4
       with:
