@@ -39,19 +39,21 @@ jobs:
       run: mvn install -DskipTests
     - name: Run Tests
       run: mvn clean test -Denv=remote
-        # Step 6: Generate Allure Report
+        # Step 6: Install Allure command-line tool
+    - name: Install Allure
+      run: |
+            sudo apt-add-repository ppa:qameta/allure
+            sudo apt-get update
+            sudo apt-get install allure
+        
+        # Step 7: Generate Allure Report from Test Results
     - name: Generate Allure Report
-      run: mvn allure:report
-
-      # Step 7: Upload Allure Results and Report
-    - name: Upload Allure Results
+      run: |
+            allure generate --clean target/allure-results/ --output allure-report/
+        
+        # Step 8: Upload Allure Report as an artifact
+    - name: Upload Allure Report
       uses: actions/upload-artifact@v4
       with:
-        name: allure-results
-        path: target/allure-results
-
-#    - name: Upload Allure Report
-#      uses: actions/upload-artifact@v4
-#      with:
-#        name: allure-report
-#        path: target/site/allure-maven-plugin
+        name: allure-report
+        path: allure-report/

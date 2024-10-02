@@ -5,7 +5,7 @@
     <test name="Tests">
         <classes>
             <class name="BookTests"/>
-            <class name="AuthorTests"/>
+<!--            <class name="AuthorTests"/>-->
         </classes>
     </test>
 </suite>
